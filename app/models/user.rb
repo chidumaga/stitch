@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
       user
     end
   end
+  
+  has_many :stitches
 end
