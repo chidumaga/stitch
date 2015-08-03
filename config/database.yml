@@ -29,7 +29,7 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: stitchvid
+  username: stitchvid
 
   # The password associated with the postgres role (username).
   #password:
@@ -67,7 +67,7 @@ test:
 # the app. Read http://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full rundown on how to provide these environment variables in a
 # production deployment.
-#
+  username: stitchvid_test
 # On Heroku and other platform providers, you may have a full connection URL
 # available as an environment variable. For example:
 #

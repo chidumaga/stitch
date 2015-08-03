@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
@@ -28,6 +28,9 @@ gem 'rails-observers'
 gem 'omniauth-google-oauth2'
 gem 'active_type', '~> 0.3.1'
 gem 'httparty'
+gem 'tzinfo-data'
+
+gem 'devise'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
