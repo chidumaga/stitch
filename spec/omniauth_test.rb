@@ -3,6 +3,7 @@ module OmniauthMacros
     OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new({
       'provider' => 'google plus',
       'uid' => '123545',
+	  'id' => '1',
       'info' => {
         'name' => 'mockuser',
         'image' => 'mock_user_thumbnail_url'

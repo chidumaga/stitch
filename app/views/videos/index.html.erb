@@ -73,6 +73,12 @@
           </div>
       <% end %>
      <% end %>
+	 
+	 <div class="icon_buttons">
+		<% if current_user %>
+			<a href="/users/<%=current_user.id%>">Profile</a>
+		<% end %>
+	 </div>
 
      <div class="sample">
      </div>

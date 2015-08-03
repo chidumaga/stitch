@@ -7,8 +7,15 @@ feature 'User profile page' do
 	end
 
 	scenario 'Profile page shows users name' do
-		visit '/users/1'
+		visit '/'
+		click_link 'Profile'
 		expect(page).to have_content("mockuser")
+	end
+	
+	scenario 'Profile page shows number of stitches created' do
+		visit '/'
+		click_link 'Profile'
+		expect(page).to have_content(' 0 stitches created')
 	end
 	
 	def sign_in
