@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   class << self
     def from_omniauth(auth)
       user = User.find_or_initialize_by(uid: auth['uid'])
