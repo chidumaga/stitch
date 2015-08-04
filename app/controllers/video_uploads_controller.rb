@@ -6,9 +6,12 @@ class VideoUploadsController < ApplicationController
     else
       redirect_to '/auth/google_oauth2'
     end
-	if !@tag
-		@stitch = Stitch.new
-	end
+		
+		if params['tag']
+			@tag_present = true
+		else
+			@tag_present = false
+		end
   end
 
   def create
@@ -17,8 +20,13 @@ class VideoUploadsController < ApplicationController
                                   file: params[:video_upload][:file].try(:tempfile).try(:to_path))
 
     @tag = params[:video_upload][:tag]
-    @stitch = current_user.stitches.create(name: @tag)
-
+		
+		if @tag_present
+			current_user.contributions.create(name: @tag)
+		else
+			current_user.stitches.create(name: @tag)
+		end
+		
     if @video_upload.save
       uploaded_video = @video_upload.upload!(current_user)
 

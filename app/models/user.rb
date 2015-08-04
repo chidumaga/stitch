@@ -10,5 +10,6 @@ class User < ActiveRecord::Base
     end
   end
   
-  has_many :stitches
+  has_many :stitches 
+  has_many :contributions
 end
