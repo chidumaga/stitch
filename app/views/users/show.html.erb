@@ -2,8 +2,33 @@
 
 </br>
 
-<%= @stitch_count %> Stitches Created
+<a href="#" id='profile-stitch-link'><%= @stitch_count %> Stitches Created</a>
 
 </br>
 
-<%= @contribution_count %> Stitch Contributions
+<a href="#"><%= @contribution_count %> Stitch Contributions</a>
+
+</br>
+
+<% @stitches.each do |stitch| %>
+	<div class="profile-stitch">
+			<h3><%= stitch.name %></h3>
+			</br>
+			<iframe class="stitch" type="text/html" width="360" height="250"
+				src="https://www.youtube.com/embed/<%=stitch.videos.first.uid%>?controls=0&modestbranding=1&rel=0&autohide=1&playlist=<%= stitch.videos.published.offset(1).pluck(:uid).join(',') -%>"
+				frameborder="0" allowfullscreen>
+			</iframe>
+		</div>
+		</br>
+<% end %>
+
+<script>
+
+	$('.profile-stitch').hide();
+	
+	$('#profile-stitch-link').click(function(){
+			$('.profile-stitch').show();
+		});
+		
+</script>
+

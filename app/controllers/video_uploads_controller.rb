@@ -21,12 +21,6 @@ class VideoUploadsController < ApplicationController
 
     @tag = params[:video_upload][:tag]
 		
-		if @tag_present
-			current_user.contributions.create(name: @tag)
-		else
-			current_user.stitches.create(name: @tag)
-		end
-		
     if @video_upload.save
       uploaded_video = @video_upload.upload!(current_user)
 
@@ -35,6 +29,11 @@ class VideoUploadsController < ApplicationController
       else
         Video.create({link: "https://www.youtube.com/watch?v=#{uploaded_video.id}", tag: @tag})
         flash[:success] = 'Your video has been uploaded! It is being processed and will appear shortly.'
+				if @tag_present
+					current_user.contributions.create(name: @tag)
+				else
+					Tag.last.update_columns(user_id: current_user.id)
+				end
       end
 
       redirect_to root_url

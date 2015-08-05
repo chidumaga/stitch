@@ -2,6 +2,7 @@ class Tag < ActiveRecord::Base
   has_many :taggings
   has_many :videos, through: :taggings
 
+	belongs_to :user
 
   scope :top, ->(num_results = 5) {
     select("tags.id, tags.name, count(taggings.id) AS taggings_count").

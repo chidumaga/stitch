@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
   
   has_many :stitches 
   has_many :contributions
+	has_many :tags
 end
