@@ -6,7 +6,7 @@
 
 </br>
 
-<a href="#"><%= @contribution_count %> Stitch Contributions</a>
+<a href="#" id='profile-contribution-link'><%= @contribution_count %> Stitch Contributions</a>
 
 </br>
 
@@ -14,20 +14,39 @@
 	<div class="profile-stitch">
 			<h3><%= stitch.name %></h3>
 			</br>
+			<h5>by <%= @username %> </h5>
 			<iframe class="stitch" type="text/html" width="360" height="250"
 				src="https://www.youtube.com/embed/<%=stitch.videos.first.uid%>?controls=0&modestbranding=1&rel=0&autohide=1&playlist=<%= stitch.videos.published.offset(1).pluck(:uid).join(',') -%>"
 				frameborder="0" allowfullscreen>
 			</iframe>
 		</div>
+		
+		<% stitch.videos.each do |video| %>
+			<div class="profile-contributions">
+				<% if video.is_contribution %>
+					<iframe class="stitch" type="text/html" width="360" height="250"
+					src="https://www.youtube.com/embed/<%=video.uid%>?controls=0&modestbranding=1&rel=0&autohide=1>
+					</iframe>
+				<% end %>
+				<!-- add a link to the tag that the video belongs to -->
+			</div>
+			<% end %>
 		</br>
 <% end %>
 
 <script>
 
 	$('.profile-stitch').hide();
+	$('.profile-contribution').hide();
 	
 	$('#profile-stitch-link').click(function(){
+			$('.profile-contribution').hide();
 			$('.profile-stitch').show();
+		});
+		
+		$('#profile-contribution-link').click(function(){
+			$('.profile-stitch').hide();
+			$('.profile-contribution').show();
 		});
 		
 </script>
