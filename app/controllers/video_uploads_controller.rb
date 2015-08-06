@@ -6,12 +6,16 @@ class VideoUploadsController < ApplicationController
     else
       redirect_to '/auth/google_oauth2'
     end
-		
+	
 		if params['tag']
-			@tag_present = true
+			@@tag_present = true
 		else
-			@tag_present = false
+			@@tag_present = false
 		end
+		
+		p @@tag_present
+		
+		#set_tag_present_to_true if params['tag']
   end
 
   def create
@@ -29,7 +33,8 @@ class VideoUploadsController < ApplicationController
       else
         Video.create({link: "https://www.youtube.com/watch?v=#{uploaded_video.id}", tag: @tag})
         flash[:success] = 'Your video has been uploaded! It is being processed and will appear shortly.'
-				if @tag_present
+				
+				if @@tag_present
 					Video.last.update_columns(is_contribution: true)
 				else
 					Tag.last.update_columns(user_id: current_user.id) #is Tag.last really the way to go?

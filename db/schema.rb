@@ -23,13 +23,6 @@ ActiveRecord::Schema.define(version: 20150805123404) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "stitches", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-    t.text     "name"
-  end
-
   create_table "taggings", force: :cascade do |t|
     t.integer  "video_id"
     t.integer  "tag_id"
@@ -76,7 +69,7 @@ ActiveRecord::Schema.define(version: 20150805123404) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.boolean  "processed",       default: false
-    t.boolean  "is_contribution"
+    t.boolean  "is_contribution", default: false, null: false
   end
 
   add_index "videos", ["uid"], name: "index_videos_on_uid", using: :btree
