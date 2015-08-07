@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 		
 		@username = user.name
 		@stitch_count = user.tags.count
-		@contribution_count = user.contributions.count
+		@contribution_count = user.videos.where(is_contribution: true).count
 		
 		@stitches = user.tags.all
 		

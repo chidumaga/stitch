@@ -1,6 +1,8 @@
 class Video < ActiveRecord::Base
   has_many :taggings
   has_many :tags, through: :taggings
+	
+	belongs_to :user
 
   def tag=(name)
     self.tags = [Tag.where(name: name).first_or_create!]

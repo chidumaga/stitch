@@ -22,16 +22,16 @@
 		</div>
 		
 		<% stitch.videos.each do |video| %>
-			<div class="profile-contributions">
+			<div class="profile-contribution">
+				</br>
 				<% if video.is_contribution %>
 					<iframe class="stitch" type="text/html" width="360" height="250"
-					src="https://www.youtube.com/embed/<%=video.uid%>?controls=0&modestbranding=1&rel=0&autohide=1>
+					src="https://www.youtube.com/embed/<%=video.uid%>?controls=0&modestbranding=1&rel=0&autohide=1 %>"
+					frameborder="0" allowfullscreen>
 					</iframe>
 				<% end %>
-				<!-- add a link to the tag that the video belongs to -->
 			</div>
-			<% end %>
-		</br>
+		<% end %>
 <% end %>
 
 <script>
