@@ -34,7 +34,7 @@ class VideoUploadsController < ApplicationController
 				
 				if @@tag_present
 					Video.last.update_columns(is_contribution: true, user_id: current_user_id)
-					@@tag_present = false
+					@@tag_present = false #seems hacky
 				else
 					Tag.last.update_columns(user_id: current_user_id) #is Tag.last really the way to go?
 					Video.last.update_columns(user_id: current_user_id)
