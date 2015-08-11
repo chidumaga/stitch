@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :video_uploads, only: [:new, :create]
   
   resources :users
+	
+	resources :follow
 
   root to: 'videos#index'
 

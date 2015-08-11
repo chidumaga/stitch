@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
   
 	has_many :tags
 	has_many :videos
+	has_many :follows
+	has_many :followed_users, :through => :follows
 end
