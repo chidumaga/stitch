@@ -1,8 +1,17 @@
-<%= @username %>
+<h2><%= @username %></h2>
 
 </br>
 
-<%= link_to "Follow", follow_index_path(:followed_user_id => @user), :method => :post %>
+<% if  ids_of_users_following(current_user).include? @user.id %>
+	
+	<p> You follow this user </p>
+	<%= link_to "Unfollow", follow_path, :method => :delete %>
+
+<% else %>
+
+	<%= link_to "Follow", follow_index_path(:followed_user_id => @user), :method => :post %>
+	
+<% end %>
 
 </br>
 

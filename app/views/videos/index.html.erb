@@ -41,7 +41,7 @@
       <% if tag.videos.published.count > 0 %>
          <div class="row" id="row-color<%= @tags.index(tag) %>">
             <h2 id="tagname"><%=tag.name.upcase%></h2>
-						<h4> by <a href="#"><%= User.find_by_id(tag.user_id).name %></a> </h4>
+						<h4> by <a href="/users/<%=tag.user.id%>" ><%= User.find_by_id(tag.user_id).name %></a> </h4>
             <div class="col-md-1 text-center centerstitch">
                  <a class='glyphicon glyphicon-play-circle icon1' id='<%= tag.name -%>-stitch' data-playlist="<%=tag.videos.published.pluck(:uid).join(',') %>"></a>
                  <br>
